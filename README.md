@@ -1,16 +1,18 @@
-# Vue 3 + Typescript + Vite + Vitest
+# N빵 계산기
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+친구들과 여행할 때마다 액셀에 표 그리고 계산하기 귀찮아서 *Vue*로 제작함
 
-## Recommended IDE Setup
+## (의미 없지만)개발환경
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+- IDE : _VSCode_
+- Lang : _TypeScript_
+- Framework : _Vue.js_
+- Module Bundler : _Vite_
+- Test Environment : _Vitest_
 
-## Type Support For `.vue` Imports in TS
+## 개발 환경 설정
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+아래 스크립트 입력
 
-1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+1. `yarn install`
+2. `yarn dev`
