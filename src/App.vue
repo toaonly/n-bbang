@@ -9,11 +9,14 @@
           <div class="flex items-center h-[48px]">
             <input
               v-model="name"
+              v-shortcut="'ctrl+alt+r'"
               autofocus
+              required
               type="text"
               class="flex-1 h-full"
             >
             <button
+              v-shortcut="'enter'"
               class="w-[80px] h-full bg-blue-500 text-white"
               type="submit"
             >
@@ -141,7 +144,8 @@
           <tr>
             <td colspan="5">
               <button
-                class="bg-blue-500 text-white w-full"
+                v-shortcut="'ctrl+a'"
+                class="bg-blue-500 text-white w-full h-12"
                 @click="payments.addEmpty"
               >
                 내역 추가
