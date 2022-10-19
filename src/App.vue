@@ -9,10 +9,11 @@
           <div class="flex items-center h-[48px]">
             <input
               v-model="name"
-              v-shortcut="'ctrl+alt+r'"
+              v-shortcut="'ctrl+alt+c'"
               autofocus
               required
               type="text"
+              placeholder="이름 등록"
               class="flex-1 h-full"
             >
             <button
@@ -72,12 +73,16 @@
         <tbody>
           <tr>
             <td colspan="2">
-              합계
+              <div class="text-center">
+                합계
+              </div>
             </td>
             <td colspan="3">
-              {{ Intl.NumberFormat('ko-KR', {
-                currency: 'KRW'
-              }).format(payments.totalAmount) }}
+              <div class="amount">
+                {{ Intl.NumberFormat('ko-KR', {
+                  currency: 'KRW'
+                }).format(payments.totalAmount) }}
+              </div>
             </td>
           </tr>
           <tr
@@ -110,7 +115,7 @@
                   v-for="member in members.list"
                   :key="member.id"
                 >
-                  <div class="inline-flex">
+                  <div class="inline-flex items-center gap-1">
                     <label :for="`pm-m-${payment.id}-${member.id}`">{{ member.name }}</label>
                     <input
                       :id="`pm-m-${payment.id}-${member.id}`"
@@ -126,6 +131,7 @@
             <td>
               <input
                 v-model.number="payment.amount"
+                class="amount"
                 type="number"
                 min="0"
               >
@@ -144,7 +150,7 @@
           <tr>
             <td colspan="5">
               <button
-                v-shortcut="'ctrl+a'"
+                v-shortcut="'ctrl+alt+a'"
                 class="bg-blue-500 text-white w-full h-12"
                 @click="payments.addEmpty"
               >
@@ -188,9 +194,9 @@
               v-for="member in members.list"
               :key="member.id"
             >
-              <span>
+              <div class="amount">
                 {{ Intl.NumberFormat('ko-KR', { currency: 'KRW' }).format(calc.getResultMap()[member.id]?.already) }}
-              </span>
+              </div>
             </td>
           </tr>
           <tr>
@@ -199,9 +205,9 @@
               v-for="member in members.list"
               :key="member.id"
             >
-              <span>
+              <div class="amount">
                 {{ Intl.NumberFormat('ko-KR', { currency: 'KRW' }).format(calc.getResultMap()[member.id]?.toBePaid) }}
-              </span>
+              </div>
             </td>
           </tr>
           <tr>
@@ -210,9 +216,9 @@
               v-for="member in members.list"
               :key="member.id"
             >
-              <span>
+              <div class="amount">
                 {{ Intl.NumberFormat('ko-KR', { currency: 'KRW' }).format(calc.getResultMap()[member.id]?.result) }}
-              </span>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -255,5 +261,9 @@ table {
       @apply w-full;
     }
   }
+}
+
+.amount {
+  @apply text-right;
 }
 </style>

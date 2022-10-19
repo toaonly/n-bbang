@@ -89,4 +89,22 @@ export class SimpleShortcut<
   disconnect() {
     this.subscription?.unsubscribe()
   }
+
+  toString() {
+    const { ctrlKey, altKey, shiftKey, metaKey, key } = this
+    const combineKeys = {
+      ctrlKey,
+      altKey,
+      shiftKey,
+      metaKey,
+    }
+
+    return (
+      Object.entries(combineKeys).reduce(
+        (acc, [key, value]) =>
+          acc + (value ? `${key.replace('Key', '')}+` : ''),
+        ''
+      ) + key
+    )
+  }
 }
