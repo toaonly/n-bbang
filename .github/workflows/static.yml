@@ -37,7 +37,7 @@ jobs:
         with:
           node-version: '16'
       - run: yarn install
-      - run: yarn build --base n-bbang
+      - run: yarn build --base /n-bbang
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
