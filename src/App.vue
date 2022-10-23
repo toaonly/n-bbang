@@ -1,53 +1,9 @@
 <template>
   <div class="flex w-full h-screen divide-gray-700 xs:flex-col xs:divide-y xl:flex-row xl:divide-x">
     <div class="flex flex-col flex-1 p-4 gap-4 divide-y divide-gray-700">
-      <div class="flex flex-col gap-4">
-        <h3 class="text-center font-semibold">
-          엔빵러 등록 ({{ members.length }}th)
-        </h3>
-        <form @submit.prevent="addMember">
-          <div class="flex items-center h-[48px]">
-            <input
-              v-model="name"
-              v-shortcut="'ctrl+alt+c'"
-              autofocus
-              required
-              type="text"
-              placeholder="이름 등록"
-              class="flex-1 h-full"
-            >
-            <button
-              v-shortcut="'enter'"
-              class="w-[80px] h-full bg-blue-500 text-white"
-              type="submit"
-            >
-              추가
-            </button>
-          </div>
-        </form>
-      </div>
+      <MemberRegistration />
 
-      <div class="flex-1 overflow-auto py-4">
-        <div class="flex flex-col gap-2 h-auto">
-          <div
-            v-for="member in members.list"
-            :key="member.id"
-            class="flex items-center h-[48px]"
-          >
-            <input
-              v-model="member.name"
-              type="text"
-              class="flex-1 h-full"
-            >
-            <button
-              class="w-[80px] h-full bg-red-500 text-white"
-              @click="members.removeById(member.id)"
-            >
-              삭제
-            </button>
-          </div>
-        </div>
-      </div>
+      <MemberList />
     </div>
     <div class="flex flex-[4] divide-gray-700 xs:flex-col xs:divide-y xl:flex-row xl:divide-x">
       <div class="flex-1 p-4">
@@ -230,21 +186,14 @@
 
 <script setup lang="ts">
 import { useCalc, useMembersStore, usePaymentsStore } from '@/store'
+import { MemberList, MemberRegistration } from './components'
 
-let name = $ref('')
 const calc = useCalc()
 const members = useMembersStore()
 const payments = usePaymentsStore()
-
-const addMember = () => {
-  if (!name) return
-
-  members.add({ name })
-  name = ''
-}
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 input[type="text"] {
   @apply flex-1 h-full px-3;  
 }
