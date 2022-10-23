@@ -1,3 +1,4 @@
+import { createIdGenerator } from '@/utils'
 import { keyBy } from 'lodash-es'
 import { defineStore } from 'pinia'
 import { Member, useMembersStore } from './members'
@@ -10,17 +11,7 @@ export type Payment = {
   amount: number
 }
 
-const createPaymentIdGenerator = () => {
-  let n = 0
-
-  const generator = function* () {
-    while (true) yield `payment-${n++}`
-  }
-
-  return generator()
-}
-
-const paymentIdGenerator = createPaymentIdGenerator()
+const paymentIdGenerator = createIdGenerator('payment')
 
 export const usePaymentsStore = defineStore('payments', {
   state: () => ({
@@ -42,8 +33,7 @@ export const usePaymentsStore = defineStore('payments', {
     },
 
     addEmpty() {
-      this.list.push({
-        id: paymentIdGenerator.next().value,
+      this.add({
         memberId: '',
         members: useMembersStore().ids,
         summary: '',

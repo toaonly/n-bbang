@@ -1,3 +1,4 @@
+import { createIdGenerator } from '@/utils'
 import { keyBy } from 'lodash-es'
 import { defineStore } from 'pinia'
 
@@ -6,17 +7,7 @@ export type Member = {
   name: string
 }
 
-const createMemberIdGenerator = () => {
-  let n = 0
-
-  const generator = function* () {
-    while (true) yield `member-${n++}`
-  }
-
-  return generator()
-}
-
-const memberIdGenerator = createMemberIdGenerator()
+const memberIdGenerator = createIdGenerator('member')
 
 export const useMembersStore = defineStore('members', {
   state: () => ({
@@ -31,6 +22,8 @@ export const useMembersStore = defineStore('members', {
 
   actions: {
     add(value: Omit<Member, 'id'>) {
+      if (!value.name) throw Error('멤버 이름을 입력하세요')
+
       this.list.push({
         id: memberIdGenerator.next().value,
         ...value,
