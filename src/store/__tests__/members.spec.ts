@@ -1,7 +1,7 @@
 import { setActivePinia, createPinia } from 'pinia'
 import { useMembersStore } from '../members'
 
-describe('Member store', () => {
+describe('Members store', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
   })
