@@ -45,12 +45,18 @@ export const usePaymentsStore = defineStore('payments', {
       return this.list.filter(r => r.memberId === memId)
     },
 
+    _removeAt(idOrIndex: Payment['id'] | number) {
+      this.list = this.list.filter((r, i) =>
+        typeof idOrIndex === 'number' ? idOrIndex !== i : r.id !== idOrIndex
+      )
+    },
+
     removeAt(index: number) {
-      this.list = this.list.filter((_, i) => i !== index)
+      this._removeAt(index)
     },
 
     removeById(id: Payment['id']) {
-      this.list = this.list.filter(r => r.id !== id)
+      this._removeAt(id)
     },
   },
 })
