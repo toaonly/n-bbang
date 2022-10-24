@@ -25,9 +25,10 @@ export const usePaymentsStore = defineStore('payments', {
   },
 
   actions: {
-    add(value: Omit<Payment, 'id'>) {
+    add(value: Omit<Payment, 'id' | 'members'>) {
       this.list.push({
         id: paymentIdGenerator.next().value,
+        members: useMembersStore().ids,
         ...value,
       })
     },
@@ -35,7 +36,6 @@ export const usePaymentsStore = defineStore('payments', {
     addEmpty() {
       this.add({
         memberId: '',
-        members: useMembersStore().ids,
         summary: '',
         amount: 0,
       })
