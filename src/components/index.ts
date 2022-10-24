@@ -1,2 +1,2 @@
-export * from './MemberRegistration'
-export * from './MemberList'
+export * from './Member'
+export * from './Payment'
