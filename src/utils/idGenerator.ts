@@ -1,4 +1,4 @@
-export const createIdGenerator = (prefix: string) => {
+const createIdGenerator = (prefix: string) => {
   let n = 0
 
   const generator = function* () {
@@ -7,3 +7,5 @@ export const createIdGenerator = (prefix: string) => {
 
   return generator()
 }
+
+export default createIdGenerator

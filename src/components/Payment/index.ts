@@ -1,7 +1,9 @@
 import Registration from './PaymentRegistration.vue'
 import Result from './PaymentResult.vue'
 
-export const Payment = {
+const Payment = {
   Registration,
   Result,
 }
+
+export default Payment

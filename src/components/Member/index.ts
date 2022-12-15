@@ -1,7 +1,9 @@
 import List from './MemberList.vue'
 import Registration from './MemberRegistration.vue'
 
-export const Member = {
+const Member = {
   List,
   Registration,
 }
+
+export default Member

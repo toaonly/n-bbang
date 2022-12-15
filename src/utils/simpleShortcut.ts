@@ -11,7 +11,7 @@ abstract class AbstractSimpleShortcut<T> {
   ) {}
 }
 
-export class SimpleShortcut<
+export default class SimpleShortcut<
   T extends HTMLElement | Window = Window
 > extends AbstractSimpleShortcut<T> {
   type?: KeyboardEvent[keyof Pick<KeyboardEvent, 'type'>] = ''

@@ -11,7 +11,7 @@
           autofocus
           required
           type="text"
-          placeholder="이름 등록"
+          placeholder="엔빵러 이름"
           class="flex-1 h-full"
         >
         <button
@@ -19,7 +19,7 @@
           class="w-[80px] h-full bg-blue-500 text-white"
           type="submit"
         >
-          추가
+          등록
         </button>
       </div>
     </form>
