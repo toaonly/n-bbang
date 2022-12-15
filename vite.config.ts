@@ -1,4 +1,3 @@
-import alias from '@rollup/plugin-alias'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import * as path from 'path'
@@ -15,15 +14,15 @@ export default defineConfig(({ mode }) => {
   Object.assign(process.env, loadEnv(mode, process.cwd(), ''))
 
   return {
+    resolve: {
+      alias: [
+        {
+          find: '@',
+          replacement: resolve('src'),
+        },
+      ],
+    },
     plugins: [
-      alias({
-        entries: [
-          {
-            find: '@',
-            replacement: resolve('src'),
-          }
-        ],
-      }),
       analyze({
         showExports: true,
         skipFormatted: true,
